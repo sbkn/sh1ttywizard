@@ -11,5 +11,9 @@
     "wizard"
   ],
   "author": "sbkn",
-  "license": "ISC"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sbkn/sh1ttywizard.git"
+  }
 }
