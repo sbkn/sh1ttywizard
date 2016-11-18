@@ -1,11 +1,11 @@
 import Main from "./main.es6"
 
-const mainHandler = () => {
+const getServiceConfig = (args) => {
 
-	Main.main();
+	return Main.getConfig(args);
 };
 
 module.exports = {
 
-	mainHandler: mainHandler
+	getServiceConfig: getServiceConfig
 };

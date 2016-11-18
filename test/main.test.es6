@@ -4,7 +4,18 @@ describe("doAwesomeStuff", () => {
 
 	it("does awesome stuff", done => {
 
-		Main.main();
-		done();
+		const args = {
+			serviceName: "testService",
+			bucketName: "testBucket"
+		};
+
+		Main.getConfig(args)
+			.then(config => {
+				console.log(config);
+				done();
+			})
+			.catch(err => {
+				done(new Error(err));
+			});
 	});
 });

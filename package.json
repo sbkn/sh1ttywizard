@@ -17,6 +17,7 @@
     "url": "https://github.com/sbkn/sh1ttywizard.git"
   },
   "devDependencies": {
+	  "aws-sdk": "2.7.4",
     "babel-core": "^6.2.4",
     "babel-eslint": "^6.0.0",
     "babel-loader": "^6.0.0",

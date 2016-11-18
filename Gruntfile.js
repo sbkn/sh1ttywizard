@@ -27,7 +27,6 @@ module.exports = function (grunt) {
 
 			options: {
 
-				// webpack options
 				entry: {
 					"index": "./src/index.es6"
 				},

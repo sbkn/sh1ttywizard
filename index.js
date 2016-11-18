@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
+		module.exports = factory(require("promise"), require("aws-sdk"));
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define(["promise", "aws-sdk"], factory);
 	else {
-		var a = factory();
+		var a = typeof exports === 'object' ? factory(require("promise"), require("aws-sdk")) : factory(root["promise"], root["aws-sdk"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function() {
+})(this, function (__WEBPACK_EXTERNAL_MODULE_22__, __WEBPACK_EXTERNAL_MODULE_23__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -62,14 +62,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var mainHandler = function mainHandler() {
+		var getServiceConfig = function getServiceConfig(args) {
 
-		_main2.default.main();
+			return _main2.default.getConfig(args);
 	};
 
 	module.exports = {
 
-		mainHandler: mainHandler
+		getServiceConfig: getServiceConfig
 	};
 
 /***/ },
@@ -90,6 +90,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass3 = _interopRequireDefault(_createClass2);
 
+		var _promise = __webpack_require__(22);
+
+		var _promise2 = _interopRequireDefault(_promise);
+
+		var _awsSdk = __webpack_require__(23);
+
+		var _awsSdk2 = _interopRequireDefault(_awsSdk);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Main = function () {
@@ -98,10 +106,37 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		(0, _createClass3.default)(Main, null, [{
-			key: "main",
-			value: function main() {
+			key: "getConfig",
 
-				console.log("This is a message from the demo package");
+
+			/**
+			 *
+			 * @param {Object} args Arguments
+			 * @param {string} args.serviceName Name of service to get config for
+			 * @param {string} args.bucketName Name of bucket where the configs are
+			 */
+			value: function getConfig(args) {
+
+				console.info("Will get service config for " + args + " ..");
+
+				return new _promise2.default(function (resolve, reject) {
+
+					var params = {
+						Bucket: args.bucketName,
+						Key: args.serviceName
+					};
+
+					var s3 = new _awsSdk2.default.S3();
+
+					s3.getObject(params, function (err, data) {
+						console.info(err, data);
+						if (err) {
+							reject(err);
+						} else {
+							resolve(data);
+						}
+					});
+				});
 			}
 		}]);
 		return Main;
@@ -417,6 +452,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value       : value
 	  };
 	};
+
+		/***/
+	},
+	/* 22 */
+	/***/ function (module, exports) {
+
+		module.exports = require("promise");
+
+		/***/
+	},
+	/* 23 */
+	/***/ function (module, exports) {
+
+		module.exports = require("aws-sdk");
 
 /***/ }
 /******/ ])
