@@ -1,10 +1,10 @@
 
 
-Create awesome stuff
+Sh1ttyWizard
 ===================
 
 
-Does awesome stuff.
+Retrieves a configuration file from S3.
 
 ----------
 
@@ -12,6 +12,5 @@ Does awesome stuff.
 Todo:
 -------------
 
- - Do awesome stuff.
- - ???
- - PROFIT!
+ - Mock AWS S3.
+ - Make getConfig return the complete config file from S3.

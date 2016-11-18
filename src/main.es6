@@ -4,7 +4,8 @@ import AWS from "aws-sdk";
 export default class Main {
 
 	/**
-	 *
+	 * Get the complete configuration file for given service from given bucket.
+	 *      In bucket there has to be a json file named the same as the service.
 	 * @param {Object} args Arguments
 	 * @param {string} args.serviceName Name of service to get config for
 	 * @param {string} args.bucketName Name of bucket where the configs are
