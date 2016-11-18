@@ -77,15 +77,19 @@ module.exports = function (grunt) {
 				command: "node node_modules/mocha/bin/_mocha test/**/*.es6" +
 				" -t 6000"
 			},
-
 			cover: {
 				command: "node node_modules/isparta/bin/isparta cover" +
 				" node_modules/mocha/bin/_mocha --include src/**/*.es6" +
 				" src/*.es6 -- test/**/*.es6 -t 6000"
 			},
-
 			publish_patch: {
 				command: "npm version patch && npm publish"
+			},
+			publish_minor: {
+				command: "npm version minor && npm publish"
+			},
+			publish_major: {
+				command: "npm version major && npm publish"
 			}
 		},
 
