@@ -28,20 +28,20 @@ describe("#Main", () => {
 		it("does awesome stuff", () => {
 
 			const config = {
-				id: 1
+				enabled: true
 			};
 
 			const schema = {
-				title: "Product",
-				description: "A product from Acme's catalog",
+				title: "Config for Awesome Service",
+				description: "The config",
 				type: "object",
 				properties: {
-					id: {
+					enabled: {
 						description: "The unique identifier for a product",
-						type: "integer"
+						type: "boolean"
 					}
 				},
-				required: ["id"]
+				required: ["enabled"]
 			};
 
 			const args = {
@@ -67,20 +67,20 @@ describe("#Main", () => {
 		it("does validate correctly (true)", () => {
 
 			const config = {
-				id: 1
+				enabled: true
 			};
 
 			const schema = {
-				title: "Product",
-				description: "A product from Acme's catalog",
+				title: "Config for Awesome Service",
+				description: "The config",
 				type: "object",
 				properties: {
-					id: {
+					enabled: {
 						description: "The unique identifier for a product",
-						type: "integer"
+						type: "boolean"
 					}
 				},
-				required: ["id"]
+				required: ["enabled"]
 			};
 
 			const result = Main._validateConfigFile(config, schema);
@@ -90,20 +90,20 @@ describe("#Main", () => {
 		it("does validate correctly (false)", () => {
 
 			const config = {
-				id: 1
+				enabled: true
 			};
 
 			const schema = {
-				title: "Product",
-				description: "A product from Acme's catalog",
+				title: "Config for Awesome Service",
+				description: "The config",
 				type: "object",
 				properties: {
-					id: {
+					enabled: {
 						description: "The unique identifier for a product",
-						type: "integer"
+						type: "boolean"
 					}
 				},
-				required: ["id", "name"]
+				required: ["enabled", "name"]
 			};
 
 			const result = Main._validateConfigFile(config, schema);
